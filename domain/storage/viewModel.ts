@@ -1,7 +1,9 @@
+import storage from '../services/storage';
 import useStorage from '.';
 
 const useStorageViewModel = () => {
-  const viewModel = useStorage();
+  //dependency injection
+  const viewModel = useStorage(storage);
 
   return {
     ...viewModel,

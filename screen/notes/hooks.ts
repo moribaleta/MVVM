@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useStorageViewModel from '../../services/storage/viewModel';
+import useStorageViewModel from '../../domain/storage/viewModel';
 
 const useNotesController = () => {
   const { entries, setEntryAsDeselected, setEntryAsSelected, deleteEntry } =
@@ -7,20 +7,20 @@ const useNotesController = () => {
 
   const [isVisible, setVisible] = useState(false);
 
-  const onUpdateEntry = (note: string, isEnabled: boolean) => {
-    if (isEnabled) {
-      setEntryAsSelected(note);
-    } else {
-      setEntryAsDeselected(note);
-    }
-  };
-
   const onClose = () => {
     setVisible(false);
   };
 
   const onOpenModal = () => {
     setVisible(true);
+  };
+
+  const onUpdateEntry = (note: string, isEnabled: boolean) => {
+    if (isEnabled) {
+      setEntryAsSelected(note);
+    } else {
+      setEntryAsDeselected(note);
+    }
   };
 
   return {
@@ -32,4 +32,5 @@ const useNotesController = () => {
     onOpenModal,
   };
 };
+
 export default useNotesController;

@@ -1,6 +1,6 @@
 import { CreateNoteControllerType } from './types';
 import { useState } from 'react';
-import useStorageViewModel from '../../services/storage/viewModel';
+import useStorageViewModel from '../../domain/storage/viewModel';
 
 const useCreateNoteController = ({ onClose }: CreateNoteControllerType) => {
   const [note, setNote] = useState('');

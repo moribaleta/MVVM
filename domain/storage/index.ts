@@ -1,24 +1,12 @@
-import { proxyMap } from 'valtio/utils';
 import { useSnapshot } from 'valtio/react';
-import { useState } from 'react';
 
 /**
- * model example to incorporate valtio states
+ * domain model for storage
+ * as this contains the definite business logic
+ * @param storage
+ * @returns
  */
-
-const map: Record<string, boolean> = {
-  'note 1': true,
-  'note 2': false,
-  'note 3': true,
-};
-
-const storage = proxyMap<string, boolean>();
-
-Object.keys(map).map((key) => {
-  storage.set(key, map[key]);
-});
-
-const useStorage = () => {
+const useStorage = (storage: Map<string, boolean>) => {
   const snapStorage = useSnapshot(storage);
 
   const updateEntry = (key: string, isEnabled: boolean) => {
